@@ -258,7 +258,7 @@ export default function MonitoringForm() {
             ></textarea>
           </div>
           <button className="w-full bg-[#363062] border border-transparent h-14 rounded-lg text-white font-bold text-4 transition-all duration-200 ease-in-out hover:border hover:border-[#363062] hover:bg-transparent hover:text-[#363062]">
-            CONTINUE
+            SEND
           </button>
         </form>
       </div>

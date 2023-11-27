@@ -9,7 +9,7 @@ export default function MonitorTitle({
         <h1 className="text-center text-[#F99417] font-semibold text-[40px]">Form Kesehatan</h1>
         <img src="/images/monitoring-img.svg" alt="" className="h-full"/>
       </div>
-      <div className="w-full">{children}</div>
+      <div className="w-full my-auto">{children}</div>
     </>
   );
 }

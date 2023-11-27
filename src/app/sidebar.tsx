@@ -40,24 +40,24 @@ export default function SideBar() {
             </button>
           </li>
           <li>
-            <Link href="/monitoring/monitoring-profile">
+            <Link href="/monitoring-profile">
               <button
                 className={`${
-                  pathname === "/monitoring/monitoring-profile"
+                  pathname === "/monitoring-profile" || pathname === '/monitoring-form'
                     ? "bg-[#363062] text-white"
                     : "bg-white hover:bg-gray-200"
                 } flex flex-row items-center justify-between rounded-lg px-4 w-full h-[52px] transition duration-200 ease-in-out`}
               >
                 <ChartBarSquareIcon
                   className={`${
-                    pathname === "/monitoring/monitoring-profile"
+                    pathname === "/monitoring-profile" || pathname === '/monitoring-form'
                       ? "text-white"
                       : "text-[#545F71]"
                   }h-6 w-6`}
                 ></ChartBarSquareIcon>
                 <h4
                   className={`${
-                    pathname === "/monitoring/monitoring-profile"
+                    pathname === "/monitoring-profile" || pathname === '/monitoring-form'
                       ? "text-white"
                       : " text-[#545F71]"
                   } flex-1 text-start pl-6 font-normal text-base`}
@@ -66,7 +66,7 @@ export default function SideBar() {
                 </h4>
                 <ChevronRightIcon
                   className={`${
-                    pathname === "/monitoring/monitoring-profile"
+                    pathname === "/monitoring-profile" || pathname === '/monitoring-form'
                       ? "text-white"
                       : "text-[#545F71]"
                   }h-6 w-6`}

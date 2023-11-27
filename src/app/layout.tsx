@@ -20,7 +20,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <div className="flex font-poppins">
           <SideBar></SideBar>
-          <div className="flex-1 mx-[35px] my-[23px]">{children}</div>
+          <div className="flex flex-col flex-1 mx-[35px] my-[23px]">{children}</div>
         </div>
       </body>
     </html>

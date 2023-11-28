@@ -22,13 +22,47 @@ export default function SideBar() {
         </div>
         <ul>
           <li>
-            <button className="flex flex-row items-center justify-between rounded-lg px-4 w-full h-[52px] transition duration-200 ease-in-out hover:bg-gray-200">
-              <GlobeAltIcon className="h-6 w-6 text-[#545F71]"></GlobeAltIcon>
-              <h4 className="flex-1 text-start pl-6 font-normal text-[#545F71] text-base">
-                Aset Mining
-              </h4>
-              <ChevronRightIcon className="h-6 w-6 text-[#545F71]"></ChevronRightIcon>
-            </button>
+            <Link href="/asset-oil">
+              <button
+                className={`${
+                  pathname === "/asset-oil" ||
+                  pathname === "/stok-oil" ||
+                  pathname === "/distributed-oil"
+                    ? "bg-[#363062] text-white"
+                    : "bg-white hover:bg-gray-200"
+                } flex flex-row items-center justify-between rounded-lg px-4 w-full h-[52px] transition duration-200 ease-in-out`}
+              >
+                <GlobeAltIcon
+                  className={`${
+                    pathname === "/asset-oil" ||
+                    pathname === "/stok-oil" ||
+                    pathname === "/distributed-oil"
+                      ? "text-white"
+                      : "text-[#545F71]"
+                  } h-6 w-6`}
+                ></GlobeAltIcon>
+                <h4
+                  className={`${
+                    pathname === "/asset-oil" ||
+                    pathname === "/stok-oil" ||
+                    pathname === "/distributed-oil"
+                      ? "text-white"
+                      : " text-[#545F71]"
+                  } flex-1 text-start pl-6 font-normal text-base`}
+                >
+                  Aset Mining
+                </h4>
+                <ChevronRightIcon
+                  className={`${
+                    pathname === "/asset-oil" ||
+                    pathname === "/stok-oil" ||
+                    pathname === "/distributed-oil"
+                      ? "text-white"
+                      : "text-[#545F71]"
+                  } h-6 w-6`}
+                ></ChevronRightIcon>
+              </button>
+            </Link>
           </li>
           <li>
             <button className="flex flex-row items-center justify-between rounded-lg px-4 w-full h-[52px] transition duration-200 ease-in-out hover:bg-gray-200">
@@ -43,21 +77,24 @@ export default function SideBar() {
             <Link href="/monitoring-profile">
               <button
                 className={`${
-                  pathname === "/monitoring-profile" || pathname === '/monitoring-form'
+                  pathname === "/monitoring-profile" ||
+                  pathname === "/monitoring-form"
                     ? "bg-[#363062] text-white"
                     : "bg-white hover:bg-gray-200"
                 } flex flex-row items-center justify-between rounded-lg px-4 w-full h-[52px] transition duration-200 ease-in-out`}
               >
                 <ChartBarSquareIcon
                   className={`${
-                    pathname === "/monitoring-profile" || pathname === '/monitoring-form'
+                    pathname === "/monitoring-profile" ||
+                    pathname === "/monitoring-form"
                       ? "text-white"
                       : "text-[#545F71]"
-                  }h-6 w-6`}
+                  } h-6 w-6`}
                 ></ChartBarSquareIcon>
                 <h4
                   className={`${
-                    pathname === "/monitoring-profile" || pathname === '/monitoring-form'
+                    pathname === "/monitoring-profile" ||
+                    pathname === "/monitoring-form"
                       ? "text-white"
                       : " text-[#545F71]"
                   } flex-1 text-start pl-6 font-normal text-base`}
@@ -66,17 +103,21 @@ export default function SideBar() {
                 </h4>
                 <ChevronRightIcon
                   className={`${
-                    pathname === "/monitoring-profile" || pathname === '/monitoring-form'
+                    pathname === "/monitoring-profile" ||
+                    pathname === "/monitoring-form"
                       ? "text-white"
                       : "text-[#545F71]"
-                  }h-6 w-6`}
+                  } h-6 w-6`}
                 ></ChevronRightIcon>
               </button>
             </Link>
           </li>
         </ul>
       </div>
-      <div id="bottom-part-navbar" className="border-t border-[#363062] pt-[9px]">
+      <div
+        id="bottom-part-navbar"
+        className="border-t border-[#363062] pt-[9px]"
+      >
         <ul>
           <li>
             <button className="flex flex-row items-center justify-between rounded-lg px-4 w-full h-[52px] transition duration-200 ease-in-out hover:bg-gray-200">

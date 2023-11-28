@@ -54,9 +54,11 @@ export default function MonitoringProfile() {
             />
           </div>
           <Link href="/monitoring-form">
-            <button className="w-full bg-[#363062] mt-4 border border-transparent h-14 rounded-lg text-white font-bold text-4 transition-all duration-200 ease-in-out hover:border hover:border-[#363062] hover:bg-transparent hover:text-[#363062]">
-              CONTINUE
-            </button>
+            <input
+              type="submit"
+              value="CONTINUE"
+              className="w-full bg-[#363062] mt-4 border border-transparent h-14 rounded-lg text-white font-bold text-4 cursor-pointer transition-all duration-200 ease-in-out hover:border hover:border-[#363062] hover:bg-transparent hover:text-[#363062]"
+            />
           </Link>
         </form>
       </div>

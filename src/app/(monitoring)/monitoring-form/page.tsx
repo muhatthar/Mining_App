@@ -257,9 +257,11 @@ export default function MonitoringForm() {
               required
             ></textarea>
           </div>
-          <button className="w-full bg-[#363062] border border-transparent h-14 rounded-lg text-white font-bold text-4 transition-all duration-200 ease-in-out hover:border hover:border-[#363062] hover:bg-transparent hover:text-[#363062]">
-            SEND FORM
-          </button>
+          <input
+            type="submit"
+            value="SEND FORM"
+            className="w-full bg-[#363062] mt-4 border border-transparent h-14 rounded-lg text-white font-bold text-4 cursor-pointer transition-all duration-200 ease-in-out hover:border hover:border-[#363062] hover:bg-transparent hover:text-[#363062]"
+          />
         </form>
       </div>
     </>

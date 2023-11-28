@@ -45,7 +45,7 @@ export default function MonitoringProfile() {
               Kontak Darurat
             </label>
             <input
-              type="text"
+              type="number"
               name="kontakDarurat"
               id="kontakDarurat"
               placeholder="6285827937612"

@@ -96,12 +96,12 @@ export default function RegisterPage() {
             </div>
           </div>
           <Link href="/login">
-          <button
-            type="submit"
-            className="w-full mt-4 text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium text-sm px-5 py-2.5 text-center"
-          >
-            Sign Up
-          </button>
+            <button
+              type="submit"
+              className="w-full mt-4 text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium text-sm px-5 py-2.5 text-center"
+            >
+              Sign Up
+            </button>
           </Link>
           <div className="text-sm text-center mt-6 font-regular text-[#001D6C]">
             Already have an account?{" "}

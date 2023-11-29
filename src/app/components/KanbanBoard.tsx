@@ -97,8 +97,10 @@ export default function KanbanBoard() {
         border-2
         border-columnBackgroundColor
         p-4
+        transition-all
+        duration-150
+        ease-in-out
         hover:border-[#F99417]
-        hover:text-[#F99417]
         flex
         gap-2        
         "

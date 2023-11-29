@@ -48,7 +48,7 @@ export default function TaskCard({ task, deleteTask, updateTask }: Props) {
       <div
         ref={setNodeRef}
         style={style}
-        className="opacity-30 bg-gray-100 p-2.5 h-[100px] min-h-[100px] items-center flex text-left rounded-xl border-2 border-[#F99417] cursor-grab relative"
+        className="opacity-30 bg-gray-100 p-2.5 min-h-[100px] items-center flex text-left rounded-xl border-2 border-[#F99417] cursor-grab relative"
       ></div>
     );
   }

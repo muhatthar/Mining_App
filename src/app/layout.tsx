@@ -18,7 +18,7 @@ export default function RootLayout({
       <body>
         <div className="flex font-poppins">
           <SideBar></SideBar>
-          <div className={`${pathname === '/login' || pathname === '/register' ? "bg-[url('/images/bg-image.svg')] relative isolate after:absolute after:z-0 after:bg-cover" : "bg-transparent mx-[35px] my-[23px]"} flex flex-col flex-1`}>
+          <div className={`${pathname === '/login' || pathname === '/register' ? "bg-[url('/images/bg-image.svg')] relative isolate after:absolute after:z-0 bg-cover after:inset-0" : "bg-transparent mx-[35px] my-[23px]"} flex flex-col flex-1`}>
             {children}
           </div>
         </div>

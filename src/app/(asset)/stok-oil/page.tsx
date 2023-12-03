@@ -1,7 +1,15 @@
+import { PlusCircleIcon } from "@heroicons/react/24/outline";
+
 export default function StokOil() {
   return (
     <>
-      <div className="flex px-[40px]">
+      <div className="flex flex-col px-[40px]">
+        <div className="flex w-full justify-end">
+          <button className="w-[140px] flex items-center gap-[9.25px] justify-center mb-4 rounded-xl py-2 border-2 border-transparent transition-all duration-200 ease-in-out hover:border-[#F99417]">
+            <p className="text-[#545F71] font-medium text-xl">Add List</p>
+            <PlusCircleIcon className="w-[31.5px] h-[31.5px] text-[#F99417]"></PlusCircleIcon>
+          </button>
+        </div>
         <div className="w-full text-center table-auto border border-[#DDE1E6] rounded-lg">
           <table className="w-full">
             <thead className="bg-[#F2F4F8] h-12 border-b border-[#DDE1E6]">

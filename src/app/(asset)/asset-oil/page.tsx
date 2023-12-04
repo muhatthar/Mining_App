@@ -1,14 +1,20 @@
-import { PlusCircleIcon } from "@heroicons/react/24/outline";
-import { Fragment } from "react";
+"use client";
+
 import Modal from "@/app/components/Modal";
+import { PlusCircleIcon } from "@heroicons/react/24/outline";
+import { Fragment, useState } from "react";
 
 export default function AssetOil() {
+  const [showModal, setShowModal] = useState(false);
   return (
     <>
       <Fragment>
         <div className="flex flex-col px-[40px]">
           <div className="flex w-full justify-end">
-            <button className="w-[140px] flex items-center gap-[9.25px] justify-center mb-4 rounded-xl py-2 border-2 border-transparent transition-all duration-200 ease-in-out hover:border-[#F99417]">
+            <button
+              onClick={() => setShowModal(true)}
+              className="w-[140px] flex items-center gap-[9.25px] justify-center mb-4 rounded-xl py-2 border-2 border-transparent transition-all duration-200 ease-in-out hover:border-[#F99417]"
+            >
               <p className="text-[#545F71] font-medium text-xl">Add List</p>
               <PlusCircleIcon className="w-[31.5px] h-[31.5px] text-[#F99417]"></PlusCircleIcon>
             </button>
@@ -78,7 +84,10 @@ export default function AssetOil() {
             </table>
           </div>
         </div>
-        <Modal></Modal>
+        <Modal
+          isVisible={showModal}
+          onClose={() => setShowModal(false)}
+        ></Modal>
       </Fragment>
     </>
   );

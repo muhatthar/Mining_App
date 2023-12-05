@@ -1,6 +1,6 @@
 "use client";
 
-import Modal from "@/app/components/Modal";
+import AssetModal from "@/app/components/AssetModal";
 import { PlusCircleIcon } from "@heroicons/react/24/outline";
 import { Fragment, useState } from "react";
 
@@ -84,10 +84,10 @@ export default function AssetOil() {
             </table>
           </div>
         </div>
-        <Modal
+        <AssetModal
           isVisible={showModal}
           onClose={() => setShowModal(false)}
-        ></Modal>
+        ></AssetModal>
       </Fragment>
     </>
   );

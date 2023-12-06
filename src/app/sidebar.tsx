@@ -53,7 +53,7 @@ export default function SideBar() {
                     pathname === "/monitoring-profile" || pathname === '/monitoring-form'
                       ? "text-white"
                       : "text-[#545F71]"
-                  }h-6 w-6`}
+                  } h-6 w-6`}
                 ></ChartBarSquareIcon>
                 <h4
                   className={`${
@@ -69,7 +69,7 @@ export default function SideBar() {
                     pathname === "/monitoring-profile" || pathname === '/monitoring-form'
                       ? "text-white"
                       : "text-[#545F71]"
-                  }h-6 w-6`}
+                  } h-6 w-6`}
                 ></ChevronRightIcon>
               </button>
             </Link>

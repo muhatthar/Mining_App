@@ -14,7 +14,7 @@ export default function SideBar() {
   const route = useRouter();
 
   return (
-    <nav className="sticky flex flex-col pt-[57px] px-4 space-y-60 shadow-[4px_4px_15px_rgba(0,0,0,0.25)] left-0 top-0 z-10 h-screen w-[292px] bg-white border-x border-[#DDE1E6]">
+    <nav className={`${pathname === '/login' || pathname === '/register' ? 'hidden' : 'sticky flex flex-col pt-[57px] px-4 space-y-60 shadow-[4px_4px_15px_rgba(0,0,0,0.25)] left-0 top-0 z-10 h-screen w-[292px] bg-white border-x border-[#DDE1E6]'}`}>
       <div id="top-part-navbar">
         <div className="flex justify-center items-center gap-[18px] mb-[72px]">
           <img src="/images/logo.svg" alt="" className="w-[60px] h-[60px]" />

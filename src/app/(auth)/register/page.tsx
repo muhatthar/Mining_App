@@ -1,10 +1,64 @@
-import Link from "next/link";
+"use client";
 
-export default function RegisterPage() {
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import postRegister from "@/app/components/features/auth/register";
+import { NextPage } from "next";
+
+const Daftar: NextPage = () => {
+  const router = useRouter();
+  const [forms, setForms] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+  });
+
+  const [error, setError] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+  });
+
+  const handleRegister = async (e: { preventDefault: () => void }) => {
+    e.preventDefault;
+    const { firstName, lastName, email, password } = forms;
+
+    try {
+      const res = await postRegister(firstName, lastName, email, password);
+      if (res.status === 200) {
+        setTimeout(() => {
+          router.push("/login");
+        }, 1000);
+      }
+
+      if (res.response.data.status === "error") {
+        const errMsg = {
+          firstName: res.response.data.message.firstName,
+          lastName: res.response.data.message.lastName,
+          email: res.response.data.message.email,
+          password: res.response.data.message.password,
+        };
+        setError((prev) => ({
+          ...prev,
+          firstName: errMsg.firstName,
+          lastName: errMsg.lastName,
+          email: errMsg.email,
+          password: errMsg.password,
+        }));
+        return;
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div className="min-h-screen flex flex-row justify-center items-center">
       <div className="bg-white flex-1 shadow-md max-w-[680px] rounded-[25px] p-4 sm:p-6 lg:p-20">
-        <form action="#">
+        <form>
           <h2 className="text-[42px] text-[#F99417] text-center font-bold">
             Sign Up Free
           </h2>
@@ -22,6 +76,9 @@ export default function RegisterPage() {
                 id="firstName"
                 placeholder="Adam"
                 className="bg-[#F2F4F8] border border-gray-300 rounded-lg text-gray-900 sm:text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                onChange={(e) =>
+                  setForms({ ...forms, firstName: e.target.value })
+                }
                 required
               />
             </div>
@@ -38,6 +95,9 @@ export default function RegisterPage() {
                 id="lastName"
                 placeholder="Fadilah"
                 className="bg-[#F2F4F8] border border-gray-300 rounded-lg text-gray-900 sm:text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                onChange={(e) =>
+                  setForms({ ...forms, lastName: e.target.value })
+                }
                 required
               />
             </div>
@@ -55,6 +115,7 @@ export default function RegisterPage() {
               id="email"
               className="bg-[#F2F4F8] border border-gray-300 rounded-lg text-gray-900 sm:text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
               placeholder="name@gmail.com"
+              onChange={(e) => setForms({ ...forms, email: e.target.value })}
               required
             />
           </div>
@@ -71,6 +132,7 @@ export default function RegisterPage() {
               id="password"
               placeholder="••••••••"
               className="bg-[#F2F4F8] border border-gray-300 rounded-lg text-gray-900 sm:text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+              onChange={(e) => setForms({ ...forms, password: e.target.value })}
               required
             />
           </div>
@@ -82,7 +144,6 @@ export default function RegisterPage() {
                   aria-describedby="remember"
                   type="checkbox"
                   className="border border-gray-300 focus:ring-3 focus:ring-blue-300 h-4 w-4"
-                  required
                 />
               </div>
               <div className="text-sm ml-2">
@@ -95,14 +156,13 @@ export default function RegisterPage() {
               </div>
             </div>
           </div>
-          <Link href="/login">
-            <button
-              type="submit"
-              className="w-full mt-4 text-white border border-transparent bg-[#363062] rounded-[14px] transition-all duration-200 ease-in-out hover:bg-transparent hover:border-[#363062] hover:text-[#363062] focus:ring-4 focus:ring-blue-300 font-medium text-sm px-5 py-2.5 text-center"
-            >
-              Sign Up
-            </button>
-          </Link>
+          <button
+            type="submit"
+            className="w-full mt-4 text-white border border-transparent bg-[#363062] rounded-[14px] transition-all duration-200 ease-in-out hover:bg-transparent hover:border-[#363062] hover:text-[#363062] focus:ring-4 focus:ring-blue-300 font-medium text-sm px-5 py-2.5 text-center"
+            onClick={handleRegister}
+          >
+            Sign Up
+          </button>
           <div className="text-sm text-center mt-6 font-regular text-[#001D6C]">
             Already have an account?{" "}
             <a href="/login" className="text-[#001D6C] hover:underline">
@@ -113,4 +173,6 @@ export default function RegisterPage() {
       </div>
     </div>
   );
-}
+};
+
+export default Daftar;

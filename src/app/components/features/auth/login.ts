@@ -4,7 +4,7 @@ const postLogin = async (email: string, password: string) => {
   const axiosInstance = AxiosInstance();
   try {
     const result = await axiosInstance
-      .post("auth/login", {
+      .post("/auth/login", {
         email,
         password,
       })

@@ -1,8 +1,8 @@
-import axios from "axios";
+import Axios from "axios";
 
 const AxiosInstance = () => {
-  const res = axios.create({
-    baseURL: "https://localhost:8000/api/",
+  const res = Axios.create({
+    baseURL: "http://localhost:8000/api/",
     headers: {
       "Content-Type": "application/json",
     },

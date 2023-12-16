@@ -25,7 +25,7 @@ const Login: NextPage = () => {
       const res = await postLogin(email, password);
       if (res.status === 200) {
         setTimeout(() => {
-          router.push("/");
+          router.push("/monitoring-profile");
         }, 200);
       }
 

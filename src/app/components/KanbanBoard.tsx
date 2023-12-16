@@ -20,7 +20,20 @@ import TaskCard from './TaskCard';
 import API from '@/libs';
 
 export default function KanbanBoard() {
-  const [columns, setColumns] = useState<Column[]>([]);
+  const [columns, setColumns] = useState<Column[]>([
+    {
+      id: generateId(),
+      title: 'To Do',
+    },
+    {
+      id: generateId(),
+      title: 'In Progress',
+    },
+    {
+      id: generateId(),
+      title: 'Done',
+    },
+  ]);
   const columnsId = useMemo(() => columns.map((col) => col.id), [columns]);
 
   const [tasks, setTasks] = useState<Task[]>([]);
@@ -49,15 +62,11 @@ export default function KanbanBoard() {
 
   return (
     <div
-      className="
-    m-auto
-    flex
-    min-h-screen
+      className="flex
     w-full
-    items-center
+    justify-around 
     overflow-x-auto
     overflow-y-hidden
-    px-[40px]
     "
     >
       <DndContext
@@ -66,7 +75,7 @@ export default function KanbanBoard() {
         onDragEnd={onDragEnd}
         onDragOver={onDragOver}
       >
-        <div className="m-auto flex gap-4">
+        <div className="flex">
           <div className="flex gap-4">
             <SortableContext items={columnsId}>
               {columns.map((col) => (
@@ -83,11 +92,11 @@ export default function KanbanBoard() {
               ))}
             </SortableContext>
           </div>
-          <button
-            onClick={() => {
-              createColumn();
-            }}
-            className="
+          {/* <button
+          onClick={() => {
+            createColumn();
+          }}
+          className="
         h-[60px]
         w-[350px]
         min-w-[350px]
@@ -104,9 +113,9 @@ export default function KanbanBoard() {
         flex
         gap-2        
         "
-          >
-            <PlusIcon></PlusIcon>Add Column
-          </button>
+        >
+          <PlusIcon></PlusIcon>Add Column
+        </button> */}
         </div>
 
         {createPortal(
@@ -152,7 +161,7 @@ export default function KanbanBoard() {
   function updateTask(id: Id, title: string, content: string) {
     const newTasks = tasks.map((task) => {
       if (task.id !== id) return task;
-      return { ...task, title ,content };
+      return { ...task, title, content };
     });
 
     setTasks(newTasks);

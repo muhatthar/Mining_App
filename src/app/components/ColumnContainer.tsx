@@ -64,8 +64,8 @@ export default function ColumnContainer(props: Props) {
     bg-gray-500
     opacity-30
     w-[350px]
-    h-[500px]
-    max-h-[500px]
+    h-[440px]
+    max-h-[440px]
     rounded-3xl
     flex
     flex-col
@@ -83,8 +83,8 @@ export default function ColumnContainer(props: Props) {
       className="
     bg-[#363062]
     w-[350px]
-    h-[500px]
-    max-h-[500px]
+    h-[440px]
+    max-h-[440px]
     rounded-3xl
     flex
     flex-col

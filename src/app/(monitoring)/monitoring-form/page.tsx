@@ -1,3 +1,10 @@
+"use client"
+import * as React from "react"
+
+interface MonitoringInstance {
+  
+}
+
 export default function MonitoringForm() {
   return (
     <>

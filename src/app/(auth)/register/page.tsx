@@ -1,6 +1,18 @@
+"use client"
+
+import * as React from "react"
 import Link from "next/link";
 
+interface RegisterInstance {
+  email: string;
+  password: string;
+}
+
 export default function RegisterPage() {
+  const [input, setInput] = React.useState<RegisterInstance | any>({
+    
+  })
+
   return (
     <div className="min-h-screen flex flex-row justify-center items-center">
       <div className="bg-white flex-1 shadow-md max-w-[680px] rounded-[25px] p-4 sm:p-6 lg:p-20">

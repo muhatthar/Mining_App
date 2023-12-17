@@ -1,8 +1,47 @@
-export default function LoginPage () {
+'use client';
+
+import API from '@/libs';
+import * as React from 'react';
+import {useRouter} from 'next/navigation';
+
+interface LoginInstance {
+  email: string;
+  password: string;
+}
+
+export default function LoginPage() {
+  const router = useRouter()
+  const [input, setInput] = React.useState<LoginInstance | any>({
+    email: '',
+    password: '',
+  });
+
+  const changeHandler = (e: any) => {
+    let newState = { ...input };
+    const { id, value } = e.target;
+    newState[id] = value;
+    setInput(newState);
+  };
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    const { email, password } = input;
+    const body = { email, password };
+    try {
+      const response = await API.post('/auth/login', body);
+      localStorage.setItem('token', response.data.data.access_token);
+      alert(response.data.message);
+      // window.location.href = '/task';
+      router.push('/task')
+    } catch (error: any) {
+      console.log(error.response);
+    }
+  };
+
   return (
     <div className="min-h-screen flex flex-row justify-center items-center">
       <div className="bg-white flex-1 shadow-md max-w-[680px] rounded-[25px] p-4 sm:p-6 lg:p-20">
-        <form action="#">
+        <form onSubmit={handleSubmit}>
           <h2 className="text-[42px] text-[#F99417] text-center font-bold">
             Log In
           </h2>
@@ -20,6 +59,7 @@ export default function LoginPage () {
               type="email"
               name="email"
               id="email"
+              onChange={changeHandler}
               className="bg-[#F2F4F8] border border-gray-300 rounded-lg text-gray-900 sm:text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
               placeholder="name@gmail.com"
               required
@@ -36,6 +76,7 @@ export default function LoginPage () {
               type="password"
               name="password"
               id="password"
+              onChange={changeHandler}
               placeholder="••••••••"
               className="bg-[#F2F4F8] border border-gray-300 rounded-lg text-gray-900 sm:text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
               required
@@ -74,12 +115,9 @@ export default function LoginPage () {
           >
             Log In
           </button>
-          <div className="text-sm text-center mt-6 font-regular text-[#001D6C]" >
-            No account yet?{" "}
-            <a
-              href="/register"
-              className="text-[#001D6C] hover:underline"
-            >
+          <div className="text-sm text-center mt-6 font-regular text-[#001D6C]">
+            No account yet?{' '}
+            <a href="/register" className="text-[#001D6C] hover:underline">
               Sign Up
             </a>
           </div>

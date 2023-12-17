@@ -3,9 +3,47 @@
 import AssetModal from "@/app/components/AssetModal";
 import { PlusCircleIcon } from "@heroicons/react/24/outline";
 import { Fragment, useState } from "react";
+import API from "@/libs";
+import * as React from "react";
+import { useRouter } from "next/navigation";
+
+interface AssetOilInstace {
+  namaAset: "";
+  jenisAset: "";
+  statusAset: "";
+  riwayatStatus: "";
+}
 
 export default function AssetOil() {
+  const router = useRouter();
+  const [input, setInput] = React.useState<AssetOilInstace | any>({
+    namaAset: "",
+    jenisAset: "",
+    statusAset: "",
+    riwayatStatus: "",
+  });
+  const [assets, setAssets] = React.useState<Array<AssetOilInstace>>([]);
   const [showModal, setShowModal] = useState(false);
+
+  const changeHandler = (e: any) => {
+    const { name, value } = e.target;
+    setInput((prevInput: any) => ({ ...prevInput, [name]: value}));
+  };
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    const { namaAset, jenisAset, statusAset, riwayatStatus } = input;
+    const body = { namaAset, jenisAset, statusAset, riwayatStatus };
+    try {
+      const response = await API.post("/assets/", body);
+      setAssets((prevAssets) => [...prevAssets, input])
+      alert(response.data.message);
+      setShowModal(false);
+    } catch (error: any) {
+      console.log(error.message);
+    }
+  };
+
   return (
     <>
       <Fragment>
@@ -31,55 +69,17 @@ export default function AssetOil() {
                 </tr>
               </thead>
               <tbody className="bg-white">
-                <tr className="h-12 border-b border-[#DDE1E6]">
-                  <td>1</td>
-                  <td>Minyak Goreng</td>
-                  <td>Minyak</td>
-                  <td>Basi</td>
-                  <td>Tidak ada</td>
-                </tr>
-                <tr className="h-12 border-b border-[#DDE1E6]">
-                  <td>2</td>
-                  <td>Minyak Goreng</td>
-                  <td>Minyak</td>
-                  <td>Basi</td>
-                  <td>Tidak ada</td>
-                </tr>
-                <tr className="h-12 border-b border-[#DDE1E6]">
-                  <td>3</td>
-                  <td>Minyak Goreng</td>
-                  <td>Minyak</td>
-                  <td>Basi</td>
-                  <td>Tidak ada</td>
-                </tr>
-                <tr className="h-12 border-b border-[#DDE1E6]">
-                  <td>4</td>
-                  <td>Minyak Goreng</td>
-                  <td>Minyak</td>
-                  <td>Basi</td>
-                  <td>Tidak ada</td>
-                </tr>
-                <tr className="h-12 border-b border-[#DDE1E6]">
-                  <td>5</td>
-                  <td>Minyak Goreng</td>
-                  <td>Minyak</td>
-                  <td>Basi</td>
-                  <td>Tidak ada</td>
-                </tr>
-                <tr className="h-12 border-b border-[#DDE1E6]">
-                  <td>6</td>
-                  <td>Minyak Goreng</td>
-                  <td>Minyak</td>
-                  <td>Basi</td>
-                  <td>Tidak ada</td>
-                </tr>
-                <tr className="h-12">
-                  <td className="rounded-bl-lg">7</td>
-                  <td>Minyak Goreng</td>
-                  <td>Minyak</td>
-                  <td>Basi</td>
-                  <td className="rounded-br-lg">Tidak ada</td>
-                </tr>
+                {assets.map((asset: any, i: any) => {
+                  return (
+                    <tr className="h-12" key={i}>
+                      <td className="rounded-bl-lg">{i + 1}</td>
+                      <td>{asset.namaAset}</td>
+                      <td>{asset.jenisAset}</td>
+                      <td>{asset.statusAset}</td>
+                      <td className="rounded-br-lg">{asset.riwayatStatus}</td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>
@@ -87,6 +87,8 @@ export default function AssetOil() {
         <AssetModal
           isVisible={showModal}
           onClose={() => setShowModal(false)}
+          onChangeHandler={changeHandler}
+          onSubmitHandler={handleSubmit}
         ></AssetModal>
       </Fragment>
     </>

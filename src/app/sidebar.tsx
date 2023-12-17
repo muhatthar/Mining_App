@@ -8,10 +8,13 @@ import ChevronRightIcon from "@heroicons/react/24/outline/ChevronRightIcon";
 import RectangleStackIcon from "@heroicons/react/24/outline/RectangleStackIcon";
 import { Cog6ToothIcon } from "@heroicons/react/20/solid";
 import ArrowLeftOnRectangleIcon from "@heroicons/react/20/solid/ArrowLeftOnRectangleIcon";
+import API from "@/libs";
 
 export default function SideBar() {
   const pathname = usePathname();
   const route = useRouter();
+
+  API
 
   return (
     <nav className={`${pathname === '/login' || pathname === '/register' ? 'hidden' : 'sticky flex flex-col pt-[57px] px-4 space-y-60 shadow-[4px_4px_15px_rgba(0,0,0,0.25)] left-0 top-0 z-10 h-screen w-[292px] bg-white border-x border-[#DDE1E6]'}`}>

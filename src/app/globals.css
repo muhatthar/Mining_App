@@ -15,10 +15,10 @@ body {
   height: 4px;
 }
 
-::-webkit-scrollbar-thumb {
+/* ::-webkit-scrollbar-thumb {
   @apply bg-[#F99417] rounded-xl;
-}
+} */
 
-.task > ::-webkit-scrollbar-thumb {
+/* .task > ::-webkit-scrollbar-thumb {
   @apply bg-sky-500 rounded-xl;
-}
+} */

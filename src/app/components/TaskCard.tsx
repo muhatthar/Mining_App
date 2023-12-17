@@ -13,7 +13,6 @@ interface Props {
 export default function TaskCard({ task, deleteTask, updateTask }: Props) {
   const [mouseIsOver, setMouseOver] = useState(false);
   const [editMode, setEditMode] = useState(false);
-  // const [title, setTitle] = useState(task.title || '');
   const [editField, setEditField] = useState('');
 
   const {

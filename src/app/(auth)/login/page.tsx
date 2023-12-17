@@ -1,52 +1,4 @@
-"use client";
-
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import postLogin from "@/app/components/features/auth/login";
-import { NextPage } from "next";
-
-const Login: NextPage = () => {
-  const router = useRouter();
-  const [forms, setForms] = useState({
-    email: "",
-    password: "",
-  });
-
-  const [error, setError] = useState({
-    email: "",
-    password: "",
-  });
-
-  const handleLogin = async (e: { preventDefault: () => void }) => {
-    e.preventDefault;
-    const { email, password } = forms;
-
-    try {
-      const res = await postLogin(email, password);
-      if (res.status === 200) {
-        setTimeout(() => {
-          router.push("/monitoring-profile");
-        }, 200);
-      }
-
-      if (res.response.data?.status === "fail") {
-        console.log(res.response.data?.message.password);
-        const errMsg = {
-          password: res.response.data?.message.password,
-          email: res.response.data?.message.email,
-        };
-        setError((prev) => ({
-          ...prev,
-          email: errMsg.email,
-          password: errMsg.password,
-        }));
-        return;
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
+export default function LoginPage() {
   return (
     <div className="min-h-screen flex flex-row justify-center items-center">
       <div className="bg-white flex-1 shadow-md max-w-[680px] rounded-[25px] p-4 sm:p-6 lg:p-20">
@@ -70,7 +22,6 @@ const Login: NextPage = () => {
               id="email"
               className="bg-[#F2F4F8] border border-gray-300 rounded-lg text-gray-900 sm:text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
               placeholder="name@gmail.com"
-              onChange={(e) => setForms({ ...forms, email: e.target.value })}
               required
             />
           </div>
@@ -87,7 +38,6 @@ const Login: NextPage = () => {
               id="password"
               placeholder="••••••••"
               className="bg-[#F2F4F8] border border-gray-300 rounded-lg text-gray-900 sm:text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-              onChange={(e) => setForms({ ...forms, password: e.target.value })}
               required
             />
           </div>
@@ -120,7 +70,6 @@ const Login: NextPage = () => {
           <button
             type="submit"
             className="w-full mt-4 text-white border border-transparent bg-[#363062] rounded-[14px] transition-all duration-200 ease-in-out hover:bg-transparent hover:border-[#363062] hover:text-[#363062] font-medium text-sm px-5 py-2.5 text-center"
-            onClick={handleLogin}
           >
             Log In
           </button>
@@ -135,5 +84,3 @@ const Login: NextPage = () => {
     </div>
   );
 };
-
-export default Login;

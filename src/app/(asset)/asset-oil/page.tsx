@@ -8,35 +8,35 @@ import * as React from "react";
 import { useRouter } from "next/navigation";
 
 interface AssetOilInstace {
-  namaAset: "";
-  jenisAset: "";
-  statusAset: "";
-  riwayatStatus: "";
+  Nama_Aset: "";
+  Jenis_Aset: "";
+  Status_Aset: "";
+  Riwayat_Status: "";
 }
 
 export default function AssetOil() {
   const router = useRouter();
   const [input, setInput] = React.useState<AssetOilInstace | any>({
-    namaAset: "",
-    jenisAset: "",
-    statusAset: "",
-    riwayatStatus: "",
+    Nama_Aset: "",
+    Jenis_Aset: "",
+    Status_Aset: "",
+    Riwayat_Status: "",
   });
   const [assets, setAssets] = React.useState<Array<AssetOilInstace>>([]);
   const [showModal, setShowModal] = useState(false);
 
   const changeHandler = (e: any) => {
     const { name, value } = e.target;
-    setInput((prevInput: any) => ({ ...prevInput, [name]: value}));
+    setInput((prevInput: any) => ({ ...prevInput, [name]: value }));
   };
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    const { namaAset, jenisAset, statusAset, riwayatStatus } = input;
-    const body = { namaAset, jenisAset, statusAset, riwayatStatus };
+    const { Nama_Aset, Jenis_Aset, Status_Aset, Riwayat_Status } = input;
+    const body = { Nama_Aset, Jenis_Aset, Status_Aset, Riwayat_Status };
     try {
       const response = await API.post("/assets/", body);
-      setAssets((prevAssets) => [...prevAssets, input])
+      setAssets((prevAssets) => [...prevAssets, input]);
       alert(response.data.message);
       setShowModal(false);
     } catch (error: any) {
@@ -73,10 +73,10 @@ export default function AssetOil() {
                   return (
                     <tr className="h-12" key={i}>
                       <td className="rounded-bl-lg">{i + 1}</td>
-                      <td>{asset.namaAset}</td>
-                      <td>{asset.jenisAset}</td>
-                      <td>{asset.statusAset}</td>
-                      <td className="rounded-br-lg">{asset.riwayatStatus}</td>
+                      <td>{asset.Nama_Aset}</td>
+                      <td>{asset.Jenis_Aset}</td>
+                      <td>{asset.Status_Aset}</td>
+                      <td className="rounded-br-lg">{asset.Riwayat_Status}</td>
                     </tr>
                   );
                 })}
